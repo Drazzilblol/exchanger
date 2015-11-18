@@ -10,6 +10,17 @@ public class Account {
     private int userId;
     private Double value;
 
+    public Account(int id, String name, int currencyId, int userId, Double value) {
+        this.id = id;
+        this.name = name;
+        this.currencyId = currencyId;
+        this.userId = userId;
+        this.value = value;
+    }
+
+    public Account() {
+    }
+
     public int getId() {
         return id;
     }

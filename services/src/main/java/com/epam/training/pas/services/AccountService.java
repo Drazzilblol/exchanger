@@ -1,18 +1,14 @@
-package com.epam.training.pas.dao;
+package com.epam.training.pas.services;
 
 import com.epam.training.pas.models.Account;
-import com.epam.training.pas.models.Operation;
-import com.epam.training.pas.models.User;
 
 import java.util.List;
 
 /**
  * Created by Drazz on 18.11.2015.
  */
-public interface AccountDao {
+public interface AccountService {
     List<Account> getAccounts();
-
-    List<Account> getAccountsByUser(User user);
 
     Account getAccountById(int id);
 

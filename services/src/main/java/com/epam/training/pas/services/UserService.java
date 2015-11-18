@@ -2,10 +2,13 @@ package com.epam.training.pas.services;
 
 import com.epam.training.pas.models.User;
 
+import java.util.List;
+
 /**
  * Created by Drazz on 16.11.2015.
  */
 public interface UserService {
+    public List<User> getUsers();
 
     public User getUserById(int id);
 
@@ -13,5 +16,5 @@ public interface UserService {
 
     public void delete(User user);
 
-    void deleteById(int userId);
+    public void delete(int userId);
 }

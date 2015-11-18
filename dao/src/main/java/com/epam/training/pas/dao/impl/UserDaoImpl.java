@@ -59,7 +59,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int save(User user) {
-        String sql = "INSERT INTO users (username, password) VALUES ('test', 'test');";
+        String sql = "INSERT INTO users (username, password) " +
+            "VALUES ('" + user.getUsername() + "', '" + user.getPassword() + "');";
         return jdbcTemplate.update(sql);
     }
 
@@ -71,7 +72,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void deleteById(int userId) {
+    public void delete(int userId) {
         String sql = "DELETE FROM users WHERE id = " + userId + ";";
         jdbcTemplate.update(sql);
     }
