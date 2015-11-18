@@ -4,9 +4,11 @@ import com.epam.training.pas.dao.UserDao;
 import com.epam.training.pas.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,57 +27,52 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getUsers() {
-        return null;
+        String sql = "select id, username, password from users";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            users.add(new User(
+                rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3)
+            ));
+        }
+
+        return users;
     }
 
     @Override
     public User getUserById(int id) {
         String sql = "SELECT id, username, password FROM users WHERE id = " + id;
-        String q = "select id, username, password from customers";
-       // System.out.println(jdbcTemplate.queryForList(q).size());
-        User c = jdbcTemplate.queryForObject(sql, (resultSet, i) -> {
-            return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
-        });
-        return c;
-
-      /*  Connection conn = null;
-
-        try {
-            conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            Customer customer = null;
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                customer = new Customer(
-                    rs.getInt("id"),
-                    rs.getString("username"),
-                    rs.getString("password")
-                );
-            }
-            rs.close();
-            ps.close();
-            return customer;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {}
-            }
-        }*/
-
+        String q = "select id, username, password from users";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+        User u = null;
+        if (rs.next()) {
+            u = new User(
+                rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3)
+            );
+        }
+        return u;
     }
 
     @Override
-    public void save(User user) {
-
+    public int save(User user) {
+        String sql = "INSERT INTO users (username, password) VALUES ('test', 'test');";
+        return jdbcTemplate.update(sql);
     }
 
     @Override
     public void delete(User user) {
+        String sql = "DELETE FROM users WHERE id = " + user.getId() + ";";
+        jdbcTemplate.update(sql);
 
+    }
+
+    @Override
+    public void deleteById(int userId) {
+        String sql = "DELETE FROM users WHERE id = " + userId + ";";
+        jdbcTemplate.update(sql);
     }
 }
