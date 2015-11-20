@@ -28,12 +28,7 @@ public class App {
         a.setCurrencyId(1);
 
         accountService.save(a);
-       // User u = new User();
-       // u.setUsername("test");
-       // u.setPassword("test");
-        //userService.save(u);
-       // User us = userService.getUserById(1);
-       // userService.delete(11);
+
 
     }
 }

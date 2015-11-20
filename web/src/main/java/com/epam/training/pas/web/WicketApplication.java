@@ -17,7 +17,13 @@ public class WicketApplication extends WebApplication {
         return HomePage.class;
     }
 
+    @Override
+    protected void init()
+    {
 
+        getComponentInstantiationListeners().add(new SpringComponentInjector(this));
+        mountPage("/new", AddUser.class);
+    }
 
 
 
