@@ -4,63 +4,59 @@ package com.epam.training.pas.models;
  * Created by Drazz on 20.11.2015.
  */
 public class UserProfile {
-    private int id;
-    private String first_name;
-    private String last_name;
-    private int country_id;
-    private String passport_number;
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Long countryId;
+    private String passportNumber;
+    private String email;
 
-    public UserProfile(int id, String first_name, String last_name, int country_id, String passport_number) {
-
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.country_id = country_id;
-        this.passport_number = passport_number;
+    public String getEmail() {
+        return email;
     }
 
-    public UserProfile() {
-
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public int getCountry_id() {
-        return country_id;
+    public Long getCountryId() {
+        return countryId;
     }
 
-    public void setCountry_id(int country_id) {
-        this.country_id = country_id;
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
     }
 
-    public String getPassport_number() {
-        return passport_number;
+    public String getPassportNumber() {
+        return passportNumber;
     }
 
-    public void setPassport_number(String passport_number) {
-        this.passport_number = passport_number;
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
     }
 
 

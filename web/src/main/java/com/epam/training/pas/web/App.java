@@ -23,9 +23,9 @@ public class App {
 
         Account a = new Account();
         a.setName("test");
-        a.setUserId(10);
+        a.setUserId(10l);
         a.setValue(120000.0);
-        a.setCurrencyId(1);
+        a.setCurrencyId(1l);
 
         accountService.save(a);
 

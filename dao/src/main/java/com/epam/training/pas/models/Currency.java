@@ -4,28 +4,18 @@ package com.epam.training.pas.models;
  * Created by Drazz on 16.11.2015.
  */
 public class Currency {
-    private int id;
+    private Long id;
     private String name;
     private String currencyCode;
     private Double sale;
-    private int buy;
+    private Double buy;
 
-    public Currency(int id, String name, String currencyCode, Double sale, int buy) {
-        this.id = id;
-        this.name = name;
-        this.currencyCode = currencyCode;
-        this.sale = sale;
-        this.buy = buy;
-    }
 
-    public Currency() {
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,11 +43,11 @@ public class Currency {
         this.sale = sale;
     }
 
-    public int getBuy() {
+    public Double getBuy() {
         return buy;
     }
 
-    public void setBuy(int buy) {
+    public void setBuy(Double buy) {
         this.buy = buy;
     }
 }

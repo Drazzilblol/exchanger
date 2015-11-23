@@ -4,25 +4,17 @@ package com.epam.training.pas.models;
  * Created by Drazz on 20.11.2015.
  */
 public class Country {
-    private int id;
+    private Long id;
     private String name;
-    private String country_code;
+    private String countryCode;
 
-    public Country(int id, String name, String country_code) {
-        this.id = id;
-        this.name = name;
-        this.country_code = country_code;
-    }
 
-    public Country() {
 
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,11 +26,11 @@ public class Country {
         this.name = name;
     }
 
-    public String getCountry_code() {
-        return country_code;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCountry_code(String country_code) {
-        this.country_code = country_code;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 }

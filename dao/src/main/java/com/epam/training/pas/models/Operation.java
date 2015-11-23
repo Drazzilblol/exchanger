@@ -6,52 +6,52 @@ import java.util.Date;
  * Created by Drazz on 18.11.2015.
  */
 public class Operation {
-    private int id;
-    private int currencyFromId;
-    private int currencyToId;
-    private int accountFromId;
-    private int accountToId;
+    private Long id;
+    private Long currencyFromId;
+    private Long currencyToId;
+    private Long accountFromId;
+    private Long accountToId;
     private Date date;
     private Double currencySell;
     private Double currencyBuy;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getCurrencyFromId() {
+    public Long getCurrencyFromId() {
         return currencyFromId;
     }
 
-    public void setCurrencyFromId(int currencyFromId) {
+    public void setCurrencyFromId(Long currencyFromId) {
         this.currencyFromId = currencyFromId;
     }
 
-    public int getCurrencyToId() {
+    public Long getCurrencyToId() {
         return currencyToId;
     }
 
-    public void setCurrencyToId(int currencyToId) {
+    public void setCurrencyToId(Long currencyToId) {
         this.currencyToId = currencyToId;
     }
 
-    public int getAccountFromId() {
+    public Long getAccountFromId() {
         return accountFromId;
     }
 
-    public void setAccountFromId(int accountFromId) {
+    public void setAccountFromId(Long accountFromId) {
         this.accountFromId = accountFromId;
     }
 
-    public int getAccountToId() {
+    public Long getAccountToId() {
         return accountToId;
     }
 
-    public void setAccountToId(int accountToId) {
+    public void setAccountToId(Long accountToId) {
         this.accountToId = accountToId;
     }
 

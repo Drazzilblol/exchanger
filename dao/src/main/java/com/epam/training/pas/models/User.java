@@ -6,24 +6,17 @@ import java.nio.file.attribute.UserPrincipalLookupService;
  * Created by Drazz on 16.11.2015.
  */
 public class User {
-    private int id;
+    private Long id;
     private String username;
     private String password;
 
-    public User(int id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
 
-    public User() {
-    }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

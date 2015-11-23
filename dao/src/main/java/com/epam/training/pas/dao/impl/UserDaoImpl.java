@@ -1,14 +1,13 @@
 package com.epam.training.pas.dao.impl;
 
 import com.epam.training.pas.dao.UserDao;
+import com.epam.training.pas.mapper.UserMapper;
 import com.epam.training.pas.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,52 +27,33 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getUsers() {
         String sql = "select id, username, password from users";
-        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
-        List<User> users = new ArrayList<>();
-        while (rs.next()) {
-            users.add(new User(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getString(3)
-            ));
-        }
-
+        List<User> users = jdbcTemplate.query(sql, new UserMapper());
         return users;
     }
 
     @Override
     public User getUserById(int id) {
-        String sql = "SELECT id, username, password FROM users WHERE id = " + id;
-        String q = "select id, username, password from users";
-        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
-        User u = null;
-        if (rs.next()) {
-            u = new User(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getString(3)
-            );
-        }
+        String sql = "SELECT id, username, password FROM users WHERE id = ?";
+        User u = jdbcTemplate.queryForObject(sql, new Object[]{id}, new UserMapper());
         return u;
     }
 
     @Override
     public int save(User user) {
-        String sql = "INSERT INTO users (username, password) " +
-            "VALUES ('" + user.getUsername() + "', '" + user.getPassword() + "');";
-        return jdbcTemplate.update(sql);
+        String sql = "INSERT INTO users (username, password) VALUES (?,?);";
+        return jdbcTemplate.update(sql, user.getUsername(), user.getPassword());
     }
 
     @Override
     public void delete(User user) {
-        String sql = "DELETE FROM users WHERE id = " + user.getId() + ";";
-        jdbcTemplate.update(sql);
+        String sql = "DELETE FROM users WHERE id = ?;";
+        jdbcTemplate.update(sql, user.getId());
 
     }
 
     @Override
     public void delete(int userId) {
-        String sql = "DELETE FROM users WHERE id = " + userId + ";";
-        jdbcTemplate.update(sql);
+        String sql = "DELETE FROM users WHERE id = ?";
+        jdbcTemplate.update(sql, userId);
     }
 }

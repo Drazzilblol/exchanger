@@ -5,6 +5,7 @@ CREATE TABLE public.user_profile
   last_name character varying(50),
   country_id integer,
   passport_number character varying(50),
+  email character varying(50),
   CONSTRAINT user_profile_pkey PRIMARY KEY (id),
   CONSTRAINT user_profile_country_id_fkey FOREIGN KEY (country_id)
       REFERENCES public.country (id) MATCH SIMPLE

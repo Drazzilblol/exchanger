@@ -4,28 +4,18 @@ package com.epam.training.pas.models;
  * Created by Drazz on 18.11.2015.
  */
 public class Account {
-    private int id;
+    private Long id;
     private String name;
-    private int currencyId;
-    private int userId;
+    private Long currencyId;
+    private Long userId;
     private Double value;
 
-    public Account(int id, String name, int currencyId, int userId, Double value) {
-        this.id = id;
-        this.name = name;
-        this.currencyId = currencyId;
-        this.userId = userId;
-        this.value = value;
-    }
 
-    public Account() {
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,19 +27,19 @@ public class Account {
         this.name = name;
     }
 
-    public int getCurrencyId() {
+    public Long getCurrencyId() {
         return currencyId;
     }
 
-    public void setCurrencyId(int currencyId) {
+    public void setCurrencyId(Long currencyId) {
         this.currencyId = currencyId;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
