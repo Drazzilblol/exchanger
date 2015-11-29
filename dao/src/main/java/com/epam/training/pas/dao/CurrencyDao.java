@@ -17,5 +17,5 @@ public interface CurrencyDao extends Serializable {
 
     void save(Currency currency);
 
-    void delete(Currency currency);
+    void delete(int currencyId);
 }

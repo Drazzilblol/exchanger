@@ -15,7 +15,5 @@ public interface AccountService extends Serializable {
 
     void save(Account account);
 
-    void delete(Account account);
-
     void delete(int accountId);
 }

@@ -16,5 +16,5 @@ public interface OperationDao extends Serializable {
 
     void save(Operation operation);
 
-    void delete(Operation operation);
+    void delete(int operationId);
 }

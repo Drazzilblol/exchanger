@@ -13,9 +13,7 @@ public interface UserService extends Serializable {
 
     public User getUserById(int id);
 
-    public int save(User user);
-
-    public void delete(User user);
+    public void save(User user);
 
     public void delete(int userId);
 }

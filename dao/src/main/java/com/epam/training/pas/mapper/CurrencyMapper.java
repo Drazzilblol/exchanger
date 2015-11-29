@@ -1,7 +1,6 @@
 package com.epam.training.pas.mapper;
 
 import com.epam.training.pas.models.Currency;
-import com.epam.training.pas.models.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -51,11 +51,6 @@ public class AccountDaoImpl implements AccountDao {
         jdbcTemplate.update(sql, account.getValue(), account.getName(), account.getCurrencyId(), account.getUserId());
     }
 
-    @Override
-    public void delete(Account account) {
-        String sql = "DELETE FROM account WHERE id = ?;";
-        jdbcTemplate.update(sql, account.getId());
-    }
 
     @Override
     public void delete(int accountId) {

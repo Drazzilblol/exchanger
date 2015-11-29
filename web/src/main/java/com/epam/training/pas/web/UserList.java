@@ -4,6 +4,7 @@ import com.epam.training.pas.models.User;
 import com.epam.training.pas.services.UserService;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -29,7 +30,8 @@ public class UserList extends WebPage {
         }
         ListView listview = new ListView("listview", list) {
             protected void populateItem(ListItem item) {
-                item.add(new Label("label", item.getModel()));
+             //   item.add(new Label("label", item.getModel()));
+                item.add(new BookmarkablePageLink("newUser", AddUser.class));
             }
         };
         add(listview);

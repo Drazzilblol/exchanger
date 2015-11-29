@@ -23,7 +23,6 @@ public class UserDaoImpl implements UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-
     @Override
     public List<User> getUsers() {
         String sql = "select id, username, password from users";
@@ -39,17 +38,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int save(User user) {
+    public void save(User user) {
         String sql = "INSERT INTO users (username, password) VALUES (?,?);";
-        return jdbcTemplate.update(sql, user.getUsername(), user.getPassword());
+        jdbcTemplate.update(sql, user.getUsername(), user.getPassword());
     }
 
-    @Override
-    public void delete(User user) {
-        String sql = "DELETE FROM users WHERE id = ?;";
-        jdbcTemplate.update(sql, user.getId());
-
-    }
 
     @Override
     public void delete(int userId) {

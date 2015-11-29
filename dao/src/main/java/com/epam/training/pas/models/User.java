@@ -1,6 +1,5 @@
 package com.epam.training.pas.models;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
 
 /**
  * Created by Drazz on 16.11.2015.
@@ -9,7 +8,6 @@ public class User {
     private Long id;
     private String username;
     private String password;
-
 
 
     public Long getId() {

@@ -9,13 +9,11 @@ import java.util.List;
  */
 public interface UserProfileDao {
 
-        List<UserProfile> getUserProfileList();
+        List<UserProfile> getProfiles();
 
         UserProfile getUserProfileById(int id);
 
-        int save(UserProfile userProfile);
-
-        void delete(UserProfile userProfile);
+        void save(UserProfile userProfile);
 
         void delete(int userProfileId);
 

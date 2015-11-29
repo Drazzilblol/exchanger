@@ -14,9 +14,7 @@ public interface UserDao extends Serializable {
 
     User getUserById(int id);
 
-    int save(User user);
-
-    void delete(User user);
+    void save(User user);
 
     void delete(int userId);
 }

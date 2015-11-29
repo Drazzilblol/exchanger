@@ -36,17 +36,11 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     @Override
-    public int save(Country country) {
+    public void save(Country country) {
         String sql = "INSERT INTO country (name, country_code) VALUES (?,?);";
-        return jdbcTemplate.update(sql, country.getName(), country.getCountryCode());
+        jdbcTemplate.update(sql, country.getName(), country.getCountryCode());
     }
 
-    @Override
-    public void delete(Country country) {
-        String sql = "DELETE FROM country WHERE id = ?;";
-        jdbcTemplate.update(sql, country.getId());
-
-    }
 
     @Override
     public void delete(int countryId) {

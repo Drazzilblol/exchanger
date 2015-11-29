@@ -14,9 +14,7 @@ public interface CountryDao {
 
     Country getCountry(int id);
 
-    int save(Country country);
-
-    void delete(Country country);
+    void save(Country country);
 
     void delete(int countryId);
 

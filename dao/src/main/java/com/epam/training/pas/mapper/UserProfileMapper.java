@@ -1,6 +1,5 @@
 package com.epam.training.pas.mapper;
 
-import com.epam.training.pas.models.User;
 import com.epam.training.pas.models.UserProfile;
 import org.springframework.jdbc.core.RowMapper;
 

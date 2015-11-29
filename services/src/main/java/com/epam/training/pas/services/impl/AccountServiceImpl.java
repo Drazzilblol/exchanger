@@ -33,11 +33,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void delete(Account account) {
-        accountDao.delete(account);
-    }
-
-    @Override
     public void delete(int accountId) {
         accountDao.delete(accountId);
     }
