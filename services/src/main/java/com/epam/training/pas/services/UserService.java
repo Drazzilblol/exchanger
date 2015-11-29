@@ -11,9 +11,11 @@ import java.util.List;
 public interface UserService extends Serializable {
     public List<User> getUsers();
 
-    public User getUserById(int id);
+    public User getUserById(Long id);
 
-    public void save(User user);
+    public Long save(User user);
 
-    public void delete(int userId);
+    public void update(User user);
+
+    public int delete(Long userId);
 }

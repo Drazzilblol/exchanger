@@ -78,4 +78,40 @@ public class Operation {
     public void setCurrencyBuy(Double currencyBuy) {
         this.currencyBuy = currencyBuy;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Operation operation = (Operation) o;
+
+        if (id != null ? !id.equals(operation.id) : operation.id != null) return false;
+        if (currencyFromId != null ? !currencyFromId.equals(operation.currencyFromId) : operation.currencyFromId != null)
+            return false;
+        if (currencyToId != null ? !currencyToId.equals(operation.currencyToId) : operation.currencyToId != null)
+            return false;
+        if (accountFromId != null ? !accountFromId.equals(operation.accountFromId) : operation.accountFromId != null)
+            return false;
+        if (accountToId != null ? !accountToId.equals(operation.accountToId) : operation.accountToId != null)
+            return false;
+        if (date != null ? !date.equals(operation.date) : operation.date != null) return false;
+        if (currencySell != null ? !currencySell.equals(operation.currencySell) : operation.currencySell != null)
+            return false;
+        return !(currencyBuy != null ? !currencyBuy.equals(operation.currencyBuy) : operation.currencyBuy != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (currencyFromId != null ? currencyFromId.hashCode() : 0);
+        result = 31 * result + (currencyToId != null ? currencyToId.hashCode() : 0);
+        result = 31 * result + (accountFromId != null ? accountFromId.hashCode() : 0);
+        result = 31 * result + (accountToId != null ? accountToId.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (currencySell != null ? currencySell.hashCode() : 0);
+        result = 31 * result + (currencyBuy != null ? currencyBuy.hashCode() : 0);
+        return result;
+    }
 }

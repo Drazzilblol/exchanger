@@ -12,10 +12,12 @@ public interface CountryDao {
 
     List<Country> getCountryList();
 
-    Country getCountry(int id);
+    Country getCountry(Long id);
 
-    void save(Country country);
+    Long save(Country country);
 
-    void delete(int countryId);
+    void update(Country country);
+
+    int delete(Long countryId);
 
 }

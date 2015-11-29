@@ -19,6 +19,7 @@ public class UserProfileMapper implements RowMapper<UserProfile> {
         userProfile.setEmail(rs.getString("email"));
         userProfile.setPassportNumber(rs.getString("passport_number"));
         userProfile.setCountryId(rs.getLong("country_id"));
+        userProfile.setUserId(rs.getLong("user_id"));
         return userProfile;
     }
 }

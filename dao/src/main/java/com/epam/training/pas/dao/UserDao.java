@@ -12,9 +12,11 @@ public interface UserDao extends Serializable {
 
     List<User> getUsers();
 
-    User getUserById(int id);
+    User getUserById(Long id);
 
-    void save(User user);
+    Long save(User user);
 
-    void delete(int userId);
+    void update(User user);
+
+    int delete(Long userId);
 }

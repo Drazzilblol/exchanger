@@ -11,10 +11,12 @@ public interface UserProfileDao {
 
         List<UserProfile> getProfiles();
 
-        UserProfile getUserProfileById(int id);
+        UserProfile getUserProfileById(Long id);
 
-        void save(UserProfile userProfile);
+        Long save(UserProfile userProfile);
 
-        void delete(int userProfileId);
+        void update(UserProfile userProfile);
+
+        int delete(Long userProfileId);
 
 }

@@ -13,9 +13,11 @@ public interface CurrencyDao extends Serializable {
 
     List<Currency> getCurrencies();
 
-    Currency getCurrencyById(int id);
+    Currency getCurrencyById(Long id);
 
-    void save(Currency currency);
+    Long save(Currency currency);
 
-    void delete(int currencyId);
+    void update(Currency currency);
+
+    int delete(Long currencyId);
 }

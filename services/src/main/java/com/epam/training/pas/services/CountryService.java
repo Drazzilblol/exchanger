@@ -11,9 +11,11 @@ import java.util.List;
 public interface CountryService {
     public List<Country> geCountries();
 
-    public Country getCountryById(int id);
+    public Country getCountryById(Long id);
 
-    public void save(Country country);
+    public Long save(Country country);
 
-    public void delete(int countryId);
+    public void update(Country country);
+
+    public int delete(Long countryId);
 }

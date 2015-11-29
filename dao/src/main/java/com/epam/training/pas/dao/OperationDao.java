@@ -12,9 +12,13 @@ import java.util.List;
 public interface OperationDao extends Serializable {
     List<Operation> getOperations();
 
-    Operation getOperationById(int id);
+    Operation getOperationById(Long id);
 
-    void save(Operation operation);
+    Long save(Operation operation);
 
-    void delete(int operationId);
+    void update(Operation operation);
+
+    int delete(Long operationId);
+
+    int deleteByAccountId(Long accountId);
 }

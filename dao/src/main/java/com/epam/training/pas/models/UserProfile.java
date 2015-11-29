@@ -10,6 +10,46 @@ public class UserProfile {
     private Long countryId;
     private String passportNumber;
     private String email;
+    private Long userId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserProfile that = (UserProfile) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (countryId != null ? !countryId.equals(that.countryId) : that.countryId != null) return false;
+        if (passportNumber != null ? !passportNumber.equals(that.passportNumber) : that.passportNumber != null)
+            return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        return !(userId != null ? !userId.equals(that.userId) : that.userId != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (countryId != null ? countryId.hashCode() : 0);
+        result = 31 * result + (passportNumber != null ? passportNumber.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        return result;
+    }
+
+    public Long getUserId() {
+
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getEmail() {
         return email;

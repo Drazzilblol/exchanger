@@ -9,11 +9,15 @@ import java.util.List;
  * Created by Drazz on 18.11.2015.
  */
 public interface AccountService extends Serializable {
+    void makeExchange(Account from, Account to, Double value);
+
     List<Account> getAccounts();
 
-    Account getAccountById(int id);
+    Account getAccountById(Long id);
 
-    void save(Account account);
+    Long save(Account account);
 
-    void delete(int accountId);
+    void update(Account account);
+
+    int delete(Long accountId);
 }

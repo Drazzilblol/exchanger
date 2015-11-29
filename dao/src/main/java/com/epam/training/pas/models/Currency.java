@@ -50,4 +50,30 @@ public class Currency {
     public void setBuy(Double buy) {
         this.buy = buy;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Currency currency = (Currency) o;
+
+        if (id != null ? !id.equals(currency.id) : currency.id != null) return false;
+        if (name != null ? !name.equals(currency.name) : currency.name != null) return false;
+        if (currencyCode != null ? !currencyCode.equals(currency.currencyCode) : currency.currencyCode != null)
+            return false;
+        if (sale != null ? !sale.equals(currency.sale) : currency.sale != null) return false;
+        return !(buy != null ? !buy.equals(currency.buy) : currency.buy != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (currencyCode != null ? currencyCode.hashCode() : 0);
+        result = 31 * result + (sale != null ? sale.hashCode() : 0);
+        result = 31 * result + (buy != null ? buy.hashCode() : 0);
+        return result;
+    }
 }

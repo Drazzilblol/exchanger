@@ -11,9 +11,11 @@ import java.util.List;
 public interface UserProfileService {
     public List<UserProfile> getProfiles();
 
-    public UserProfile getUserProfileById(int id);
+    public UserProfile getUserProfileById(Long id);
 
-    public void save(UserProfile userProfile);
+    public Long save(UserProfile userProfile);
 
-    public void delete(int userProfileId);
+    public void update(UserProfile userProfile);
+
+    public int delete(Long userProfileId);
 }

@@ -51,6 +51,8 @@
             <artifactId>jetty-management</artifactId>
             <scope>provided</scope>
         </dependency>
+    </dependencies>
+
 
 
 

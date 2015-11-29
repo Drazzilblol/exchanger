@@ -11,9 +11,13 @@ import java.util.List;
 public interface OperationService {
     public List<Operation> getOperations();
 
-    public Operation getOperationById(int id);
+    public Operation getOperationById(Long id);
 
-    public void save(Operation operation);
+    public Long save(Operation operation);
 
-    public void delete(int operationId);
+    public void update(Operation operation);
+
+    public int delete(Long operationId);
+
+    public int deleteByAccountId(Long accountId);
 }

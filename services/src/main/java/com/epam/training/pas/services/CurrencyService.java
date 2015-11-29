@@ -11,9 +11,11 @@ import java.util.List;
 public interface CurrencyService {
     public List<Currency> getCurrencies();
 
-    public Currency getCurrencyById(int id);
+    public Currency getCurrencyById(Long id);
 
-    public void save(Currency currency);
+    public Long save(Currency currency);
 
-    public void delete(int currencyId);
+    public void update(Currency currency);
+
+    public int delete(Long currencyId);
 }

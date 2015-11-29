@@ -13,11 +13,15 @@ import java.util.List;
 public interface AccountDao extends Serializable {
     List<Account> getAccounts();
 
-    List<Account> getAccountsByUser(User user);
+    List<Account> getAccountsByUserId(Long userId);
 
-    Account getAccountById(int id);
+    Account getAccountById(Long id);
 
-    void save(Account account);
+    Long save(Account account);
 
-    void delete(int accountId);
+    void update(Account account);
+
+    int delete(Long accountId);
+
+    Account getBankAccount(Long currencyId);
 }
