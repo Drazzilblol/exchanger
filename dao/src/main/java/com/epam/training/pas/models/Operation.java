@@ -114,4 +114,18 @@ public class Operation {
         result = 31 * result + (currencyBuy != null ? currencyBuy.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "id=" + id +
+                ", currencyFromId=" + currencyFromId +
+                ", currencyToId=" + currencyToId +
+                ", accountFromId=" + accountFromId +
+                ", accountToId=" + accountToId +
+                ", date=" + date +
+                ", currencySell=" + currencySell +
+                ", currencyBuy=" + currencyBuy +
+                '}';
+    }
 }

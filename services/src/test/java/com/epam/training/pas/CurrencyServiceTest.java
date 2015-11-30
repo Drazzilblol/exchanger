@@ -14,33 +14,28 @@ public class CurrencyServiceTest extends AbstractSpringTest {
     @Autowired
     private CurrencyService currencyService;
 
-    private static Long generatedCurrencyId;
-
     @Test
-    public void saveUserTest() {
-        Currency c = new Currency();
-        c.setName("test currency");
-        c.setCurrencyCode("TCU");
-        c.setSale(55.0);
-        c.setBuy(50.0);
-        generatedCurrencyId = currencyService.save(c);
-        c.setId(generatedCurrencyId);
-        Assert.assertEquals(currencyService.getCurrencyById(generatedCurrencyId), c);
-    }
+    public void crudCurrencyTest() {
+        Long generatedCurrencyId;
 
-    @Test
-    public void updateUserTest() {
-        Currency c = currencyService.getCurrencyById(generatedCurrencyId);
-        c.setName("test currency updated");
-        c.setCurrencyCode("TCD");
-        c.setSale(155.0);
-        c.setBuy(150.0);
-        currencyService.update(c);
-        Assert.assertEquals(currencyService.getCurrencyById(generatedCurrencyId), c);
-    }
+        Currency c1 = new Currency();
+        c1.setName("test currency");
+        c1.setCurrencyCode("TCU");
+        c1.setSale(55.0);
+        c1.setBuy(50.0);
+        generatedCurrencyId = currencyService.save(c1);
+        c1.setId(generatedCurrencyId);
+        Currency c2 = currencyService.getCurrencyById(generatedCurrencyId);
+        Assert.assertEquals(c2, c1);
 
-    @Test
-    public void deleteAccountTest() {
+        c1.setName("test currency updated");
+        c1.setCurrencyCode("TCD");
+        c1.setSale(155.0);
+        c1.setBuy(150.0);
+        currencyService.update(c1);
+        c2 = currencyService.getCurrencyById(generatedCurrencyId);
+        Assert.assertEquals(c2, c1);
+
         Assert.assertEquals(currencyService.delete(generatedCurrencyId), 1);
     }
 

@@ -2,7 +2,6 @@ package com.epam.training.pas.services.impl;
 
 import com.epam.training.pas.dao.AccountDao;
 import com.epam.training.pas.dao.CurrencyDao;
-import com.epam.training.pas.dao.MarginDao;
 import com.epam.training.pas.dao.OperationDao;
 import com.epam.training.pas.models.Account;
 import com.epam.training.pas.models.Currency;
@@ -14,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -59,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
         operation.setCurrencyToId(currencyBuy.getId());
         operation.setCurrencyBuy(value);
         operation.setCurrencySell(sellCurrencyValue);
+        operation.setDate(new Timestamp((System.currentTimeMillis() / 1000) * 1000));
         operationDao.save(operation);
     }
 

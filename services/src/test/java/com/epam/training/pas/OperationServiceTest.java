@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
+
 /**
  * Created by Drazz on 29.11.2015.
  */
@@ -14,38 +16,36 @@ public class OperationServiceTest extends AbstractSpringTest {
     @Autowired
     private OperationService operationService;
 
-    private static Long generatedOperationId;
-
     @Test
-    public void saveUserTest() {
-        Operation o = new Operation();
-        o.setAccountFromId(2l);
-        o.setAccountToId(3l);
-        o.setCurrencyFromId(1l);
-        o.setCurrencyToId(3l);
-        o.setCurrencyBuy(100.0);
-        o.setCurrencySell(15.3);
-        generatedOperationId = operationService.save(o);
-        o.setId(generatedOperationId);
-        Assert.assertEquals(operationService.getOperationById(generatedOperationId), o);
-    }
+    public void crudOperationTest() {
+        Long generatedOperationId;
 
-    @Test
-    public void updateUserTest() {
-        Operation o = operationService.getOperationById(generatedOperationId);
-        Operation operation = new Operation();
-        operation.setAccountFromId(8l);
-        operation.setAccountToId(9l);
-        operation.setCurrencyFromId(2l);
-        operation.setCurrencyToId(4l);
-        operation.setCurrencyBuy(150.0);
-        operation.setCurrencySell(155.3);
-        operationService.update(o);
-        Assert.assertEquals(operationService.getOperationById(generatedOperationId), o);
-    }
+        Operation o1 = new Operation();
+        o1.setAccountFromId(2l);
+        o1.setAccountToId(3l);
+        o1.setCurrencyFromId(1l);
+        o1.setCurrencyToId(3l);
+        o1.setCurrencyBuy(100.0);
+        o1.setCurrencySell(15.3);
+        o1.setDate(new Timestamp((System.currentTimeMillis() / 1000) * 1000));
+        generatedOperationId = operationService.save(o1);
+        o1.setId(generatedOperationId);
+        Operation o2 = operationService.getOperationById(generatedOperationId);
+        System.out.println(o1);
+        System.out.println(o2);
+        Assert.assertEquals(o2, o1);
 
-    @Test
-    public void deleteAccountTest() {
+       o1.setAccountFromId(8l);
+        o1.setAccountToId(9l);
+        o1.setCurrencyFromId(2l);
+        o1.setCurrencyToId(4l);
+        o1.setCurrencyBuy(150.0);
+        o1.setCurrencySell(155.3);
+        operationService.update(o1);
+        o2 = operationService.getOperationById(generatedOperationId);
+        Assert.assertEquals(o2, o1);
+
         Assert.assertEquals(operationService.delete(generatedOperationId), 1);
     }
+
 }

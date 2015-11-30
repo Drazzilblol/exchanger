@@ -12,34 +12,30 @@ public class UserServiceTest extends AbstractSpringTest {
     @Autowired
     private UserService userService;
 
-    private static Long generatedUserId;
-
     @Test
-    public void saveUserTest() {
-        User u = new User();
-        u.setUsername("testUser");
-        u.setPassword("testPassword");
-        u.setUserProfileId(1l);
-        u.setAdmin(false);
-        generatedUserId = userService.save(u);
-        u.setId(generatedUserId);
-        Assert.assertEquals(userService.getUserById(generatedUserId), u);
-    }
+    public void crudUserTest() {
+        Long generatedUserId;
 
-    @Test
-    public void updateUserTest() {
-        User u = userService.getUserById(generatedUserId);
-        u.setUsername("updatedTestUser");
-        u.setPassword("updatedTestPassword");
-        u.setUserProfileId(1l);
-        u.setAdmin(true);
-        userService.update(u);
-        Assert.assertEquals(userService.getUserById(generatedUserId), u);
-    }
+        User u1 = new User();
+        u1.setUsername("testUser");
+        u1.setPassword("testPassword");
+        u1.setUserProfileId(1l);
+        u1.setAdmin(false);
+        generatedUserId = userService.save(u1);
+        u1.setId(generatedUserId);
+        User u2 = userService.getUserById(generatedUserId);
+        Assert.assertEquals(u2, u1);
 
-    @Test
-    public void deleteAccountTest() {
+        u1.setUsername("updatedTestUser");
+        u1.setPassword("updatedTestPassword");
+        u1.setUserProfileId(1l);
+        u1.setAdmin(true);
+        userService.update(u1);
+        u2 = userService.getUserById(generatedUserId);
+        Assert.assertEquals(u2, u1);
+
         Assert.assertEquals(userService.delete(generatedUserId), 1);
     }
+
 
 }

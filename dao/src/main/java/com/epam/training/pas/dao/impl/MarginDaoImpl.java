@@ -61,7 +61,7 @@ public class MarginDaoImpl implements MarginDao {
                     throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(sql.toString(), new String[] {"id"});
                 ps.setLong(1, margin.getCurrencyId());
-                ps.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                ps.setTimestamp(2, new Timestamp(margin.getCreationDate().getTime()));
                 ps.setDouble(3, margin.getValue());
                 return ps;
             }

@@ -14,29 +14,24 @@ public class CountryServiceTest extends AbstractSpringTest {
     @Autowired
     private CountryService countryService;
 
-    private static Long generatedCountryId;
-
     @Test
-    public void saveUserTest() {
-        Country c = new Country();
-        c.setName("Test Country");
-        c.setCountryCode("TCO");
-        generatedCountryId = countryService.save(c);
-        c.setId(generatedCountryId);
-        Assert.assertEquals(countryService.getCountryById(generatedCountryId), c);
-    }
+    public void crudCountryTest() {
+        Long generatedCountryId;
 
-    @Test
-    public void updateUserTest() {
-        Country c = countryService.getCountryById(generatedCountryId);
-        c.setName("Test Country Updated");
-        c.setCountryCode("TCU");
-        countryService.update(c);
-        Assert.assertEquals(countryService.getCountryById(generatedCountryId), c);
-    }
+        Country c1 = new Country();
+        c1.setName("Test Country");
+        c1.setCountryCode("TCO");
+        generatedCountryId = countryService.save(c1);
+        c1.setId(generatedCountryId);
+        Country c2 = countryService.getCountryById(generatedCountryId);
+        Assert.assertEquals(c2, c1);
 
-    @Test
-    public void deleteAccountTest() {
+        c1.setName("Test Country Updated");
+        c1.setCountryCode("TCU");
+        countryService.update(c1);
+        c2 = countryService.getCountryById(generatedCountryId);
+        Assert.assertEquals(c2, c1);
+
         Assert.assertEquals(countryService.delete(generatedCountryId), 1);
     }
 

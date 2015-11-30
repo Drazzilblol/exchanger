@@ -44,25 +44,25 @@ public class OperationDaoImpl implements OperationDao {
     @Override
     public Long save(Operation operation) {
         String sql = "INSERT INTO operation (currency_from_id, currency_to_id, account_from_id, account_to_id," +
-            " currency_sell, currency_buy, date) VALUES (?,?,?,?,?,?,?);";
+                " currency_sell, currency_buy, date) VALUES (?,?,?,?,?,?,?);";
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection)
                     throws SQLException {
-                PreparedStatement ps = connection.prepareStatement(sql.toString(), new String[] {"id"});
+                PreparedStatement ps = connection.prepareStatement(sql.toString(), new String[]{"id"});
                 ps.setLong(1, operation.getCurrencyFromId());
                 ps.setLong(2, operation.getCurrencyToId());
-                ps.setLong(3, operation.getCurrencyFromId());
+                ps.setLong(3, operation.getAccountFromId());
                 ps.setLong(4, operation.getAccountToId());
                 ps.setDouble(5, operation.getCurrencySell());
                 ps.setDouble(6, operation.getCurrencyBuy());
-                ps.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
+                ps.setTimestamp(7, new Timestamp(operation.getDate().getTime()));
                 return ps;
             }
         }, holder);
 
-        return  holder.getKey().longValue();
+        return holder.getKey().longValue();
 
     }
 

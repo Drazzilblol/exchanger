@@ -15,8 +15,6 @@ public class AccountServiceTest extends AbstractSpringTest {
     @Autowired
     private AccountService accountService;
 
-    private static Long generatedAccountId;
-
     @Test
     public void exchangeTest() {
         Account a1 = new Account();
@@ -45,31 +43,27 @@ public class AccountServiceTest extends AbstractSpringTest {
     }
 
     @Test
-    public void saveAccountTest() {
-        Account a = new Account();
-        a.setName("testAccount");
-        a.setValue(100.0);
-        a.setCurrencyId(1l);
-        a.setUserId(2l);
-        generatedAccountId = accountService.save(a);
-        a.setId(generatedAccountId);
-        Assert.assertEquals(accountService.getAccountById(generatedAccountId), a);
-    }
+    public void crudAccountTest() {
+        Long generatedAccountId;
 
-    @Test
-    public void updateAccountTest() {
-        Account a = accountService.getAccountById(generatedAccountId);
-        a.setName("updatedTestAccount");
-        a.setValue(150.0);
-        a.setCurrencyId(2l);
-        accountService.update(a);
-        Assert.assertEquals(accountService.getAccountById(generatedAccountId), a);
-    }
+        Account a1 = new Account();
+        a1.setName("testAccount");
+        a1.setValue(100.0);
+        a1.setCurrencyId(1l);
+        a1.setUserId(2l);
+        generatedAccountId = accountService.save(a1);
+        a1.setId(generatedAccountId);
+        Account a2 = accountService.getAccountById(generatedAccountId);
+        Assert.assertEquals(a2, a1);
 
-    @Test
-    public void deleteAccountTest() {
+        a1.setName("updatedTestAccount");
+        a1.setValue(150.0);
+        a1.setCurrencyId(2l);
+        accountService.update(a1);
+        a2 = accountService.getAccountById(generatedAccountId);
+        Assert.assertEquals(a2, a1);
+
         Assert.assertEquals(accountService.delete(generatedAccountId), 1);
     }
-
 
 }

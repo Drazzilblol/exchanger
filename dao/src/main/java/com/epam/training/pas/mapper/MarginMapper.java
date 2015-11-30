@@ -16,6 +16,7 @@ public class MarginMapper implements RowMapper<Margin> {
         margin.setId(resultSet.getLong("id"));
         margin.setCurrencyId(resultSet.getLong("currency_id"));
         margin.setValue(resultSet.getDouble("value"));
+        margin.setCreationDate(resultSet.getTimestamp("creation_date"));
         return margin;
     }
 }
