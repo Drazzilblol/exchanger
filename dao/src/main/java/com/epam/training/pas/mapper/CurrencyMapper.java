@@ -18,6 +18,7 @@ public class CurrencyMapper implements RowMapper<Currency> {
         currency.setCurrencyCode(rs.getString("currency_code"));
         currency.setBuy(rs.getDouble("buy"));
         currency.setSale(rs.getDouble("sale"));
+        currency.setLocked(rs.getBoolean("locked"));
         return currency;
     }
 }

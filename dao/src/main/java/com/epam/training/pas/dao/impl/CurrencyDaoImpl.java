@@ -45,7 +45,7 @@ public class CurrencyDaoImpl implements CurrencyDao {
 
     @Override
     public Long save(Currency currency) {
-        String sql = "INSERT INTO currency (name, currency_code, sale, buy) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO currency (name, currency_code, sale, buy, locked) VALUES (?,?,?,?,?);";
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
@@ -56,6 +56,7 @@ public class CurrencyDaoImpl implements CurrencyDao {
                 ps.setString(2, currency.getCurrencyCode());
                 ps.setDouble(3, currency.getSale());
                 ps.setDouble(4, currency.getBuy());
+                ps.setBoolean(5, currency.getLocked());
                 return ps;
             }
         }, holder);
@@ -66,8 +67,9 @@ public class CurrencyDaoImpl implements CurrencyDao {
 
     @Override
     public void update(Currency currency) {
-        String sql = "UPDATE currency SET (name, currency_code, sale, buy) = (?,?,?,?) WHERE id=?;";
-        jdbcTemplate.update(sql, currency.getName(), currency.getCurrencyCode(), currency.getSale(), currency.getBuy(), currency.getId());
+        String sql = "UPDATE currency SET (name, currency_code, sale, buy, locked) = (?,?,?,?,?) WHERE id=?;";
+        jdbcTemplate.update(sql, currency.getName(), currency.getCurrencyCode(), currency.getSale(), currency.getBuy(),
+                currency.getLocked(), currency.getId());
     }
 
     @Override

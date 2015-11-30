@@ -9,7 +9,15 @@ public class Currency {
     private String currencyCode;
     private Double sale;
     private Double buy;
+    private Boolean locked;
 
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
 
     public Long getId() {
         return id;

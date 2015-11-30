@@ -23,6 +23,7 @@ public class CurrencyServiceTest extends AbstractSpringTest {
         c1.setCurrencyCode("TCU");
         c1.setSale(55.0);
         c1.setBuy(50.0);
+        c1.setLocked(false);
         generatedCurrencyId = currencyService.save(c1);
         c1.setId(generatedCurrencyId);
         Currency c2 = currencyService.getCurrencyById(generatedCurrencyId);
@@ -32,6 +33,7 @@ public class CurrencyServiceTest extends AbstractSpringTest {
         c1.setCurrencyCode("TCD");
         c1.setSale(155.0);
         c1.setBuy(150.0);
+        c1.setLocked(true);
         currencyService.update(c1);
         c2 = currencyService.getCurrencyById(generatedCurrencyId);
         Assert.assertEquals(c2, c1);
