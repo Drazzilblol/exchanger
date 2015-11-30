@@ -9,13 +9,13 @@ import java.util.List;
  * Created by Drazz on 23.11.2015.
  */
 public interface CurrencyService {
-    public List<Currency> getCurrencies();
+    List<Currency> getCurrencies();
 
-    public Currency getCurrencyById(Long id);
+    Currency getCurrencyById(Long id);
 
-    public Long save(Currency currency);
+    Long save(Currency currency);
 
-    public void update(Currency currency);
+    void update(Currency currency);
 
-    public int delete(Long currencyId);
+    int delete(Long currencyId);
 }

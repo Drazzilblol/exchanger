@@ -9,6 +9,8 @@ public class User {
     private String username;
     private String password;
     private Long userProfileId;
+    private Boolean isAdmin;
+
 
     @Override
     public boolean equals(Object o) {
@@ -43,7 +45,6 @@ public class User {
         this.userProfileId = userProfileId;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -66,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

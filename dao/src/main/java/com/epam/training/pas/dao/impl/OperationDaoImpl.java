@@ -88,4 +88,10 @@ public class OperationDaoImpl implements OperationDao {
         return jdbcTemplate.update(sql, accountId, accountId);
 
     }
+
+    @Override
+    public int deleteByCurrencyId(Long currencyId) {
+        String sql = "DELETE FROM operation WHERE currency_from_id = ? OR currency_to_id = ?";
+        return jdbcTemplate.update(sql, currencyId, currencyId);
+    }
 }

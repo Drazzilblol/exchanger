@@ -1,5 +1,6 @@
 package com.epam.training.pas.services.impl;
 
+import com.epam.training.pas.dao.CurrencyDao;
 import com.epam.training.pas.dao.OperationDao;
 import com.epam.training.pas.models.Operation;
 import com.epam.training.pas.services.OperationService;
@@ -19,6 +20,8 @@ public class OperationServiceImpl implements OperationService {
 
     @Autowired
     private OperationDao operationDao;
+    @Autowired
+    private CurrencyDao currencyDao;
 
     @Override
     public List<Operation> getOperations() {
@@ -32,25 +35,33 @@ public class OperationServiceImpl implements OperationService {
 
     @Override
     public Long save(Operation operation) {
-        LOGGER.debug("Operation from account {} to account {} save", operation.getAccountFromId(), operation.getAccountToId());
+        LOGGER.info("Account {}(-{} {}) -> Account {}(+{} {})", operation.getAccountFromId(), operation.getCurrencySell(),
+                currencyDao.getCurrencyById(operation.getCurrencyFromId()).getCurrencyCode(), operation.getAccountToId(),
+                operation.getCurrencyBuy(), currencyDao.getCurrencyById(operation.getCurrencyToId()).getCurrencyCode());
         return operationDao.save(operation);
     }
 
     @Override
     public void update(Operation operation) {
-        LOGGER.debug("Operation from account {} to account {} update", operation.getAccountFromId(), operation.getAccountToId());
+        LOGGER.info("Operation from account {} to account {} update", operation.getAccountFromId(), operation.getAccountToId());
         operationDao.update(operation);
     }
 
     @Override
     public int delete(Long operationId) {
-        LOGGER.debug("Delete operation with id = {}", operationId);
+        LOGGER.info("Delete operation with id = {}", operationId);
         return operationDao.delete(operationId);
     }
 
     @Override
     public int deleteByAccountId(Long accountId) {
-        LOGGER.debug("Delete all operations with accountId = {}", accountId);
+        LOGGER.info("Delete all operations with accountId = {}", accountId);
         return operationDao.deleteByAccountId(accountId);
+    }
+
+    @Override
+    public int deleteByCurrencyId(Long currencyId) {
+        LOGGER.info("Delete all operations with accountId = {}", currencyId);
+        return operationDao.deleteByCurrencyId(currencyId);
     }
 }

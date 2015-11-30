@@ -13,11 +13,13 @@ public interface OperationService {
 
     public Operation getOperationById(Long id);
 
-    public Long save(Operation operation);
+    Long save(Operation operation);
 
-    public void update(Operation operation);
+    void update(Operation operation);
 
-    public int delete(Long operationId);
+    int delete(Long operationId);
 
-    public int deleteByAccountId(Long accountId);
+    int deleteByAccountId(Long accountId);
+
+    int deleteByCurrencyId(Long currencyId);
 }

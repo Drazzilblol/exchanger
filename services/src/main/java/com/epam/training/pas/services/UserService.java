@@ -9,13 +9,13 @@ import java.util.List;
  * Created by Drazz on 16.11.2015.
  */
 public interface UserService extends Serializable {
-    public List<User> getUsers();
+    List<User> getUsers();
 
-    public User getUserById(Long id);
+    User getUserById(Long id);
 
-    public Long save(User user);
+    Long save(User user);
 
-    public void update(User user);
+    void update(User user);
 
-    public int delete(Long userId);
+    int delete(Long userId);
 }

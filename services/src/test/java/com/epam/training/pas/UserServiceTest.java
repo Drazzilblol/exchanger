@@ -20,6 +20,7 @@ public class UserServiceTest extends AbstractSpringTest {
         u.setUsername("testUser");
         u.setPassword("testPassword");
         u.setUserProfileId(1l);
+        u.setAdmin(false);
         generatedUserId = userService.save(u);
         u.setId(generatedUserId);
         Assert.assertEquals(userService.getUserById(generatedUserId), u);
@@ -31,6 +32,7 @@ public class UserServiceTest extends AbstractSpringTest {
         u.setUsername("updatedTestUser");
         u.setPassword("updatedTestPassword");
         u.setUserProfileId(1l);
+        u.setAdmin(true);
         userService.update(u);
         Assert.assertEquals(userService.getUserById(generatedUserId), u);
     }

@@ -9,13 +9,13 @@ import java.util.List;
  * Created by Drazz on 23.11.2015.
  */
 public interface CountryService {
-    public List<Country> geCountries();
+    List<Country> geCountries();
 
-    public Country getCountryById(Long id);
+    Country getCountryById(Long id);
 
-    public Long save(Country country);
+    Long save(Country country);
 
-    public void update(Country country);
+    void update(Country country);
 
-    public int delete(Long countryId);
+    int delete(Long countryId);
 }

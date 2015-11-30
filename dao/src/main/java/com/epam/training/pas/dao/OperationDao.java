@@ -21,4 +21,6 @@ public interface OperationDao extends Serializable {
     int delete(Long operationId);
 
     int deleteByAccountId(Long accountId);
+
+    int deleteByCurrencyId(Long currencyId);
 }

@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Long save(User user) {
-        String sql = "INSERT INTO users (username, password, user_profile_id) VALUES (?,?,?);";
+        String sql = "INSERT INTO users (username, password, user_profile_id, is_admin) VALUES (?,?,?,?);";
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
@@ -56,6 +56,7 @@ public class UserDaoImpl implements UserDao {
                 ps.setString(1, user.getUsername());
                 ps.setString(2, user.getPassword());
                 ps.setLong(3, user.getUserProfileId());
+                ps.setBoolean(4, user.getAdmin());
                 return ps;
             }
         }, holder);
@@ -65,8 +66,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        String sql = "UPDATE users SET (username, password, user_profile_id) = (?,?,?) WHERE id = ?;";
-        jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getUserProfileId(), user.getId());
+        String sql = "UPDATE users SET (username, password, user_profile_id, is_admin) = (?,?,?,?) WHERE id = ?;";
+        jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getUserProfileId(), user.getAdmin(), user.getId());
     }
 
 

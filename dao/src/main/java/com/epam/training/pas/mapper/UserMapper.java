@@ -18,6 +18,7 @@ public final class UserMapper implements RowMapper<User> {
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));
         user.setUserProfileId(rs.getLong("user_profile_id"));
+        user.setAdmin(rs.getBoolean("is_admin"));
         return user;
     }
 }
